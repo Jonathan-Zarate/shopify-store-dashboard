@@ -26,9 +26,9 @@ images:
   - '${_AR_HOSTNAME}/${_AR_PROJECT_ID}/${_AR_REPOSITORY}/${_SERVICE_NAME}:$COMMIT_SHA'
 
 substitutions:
-  _AR_HOSTNAME: europe-west1-docker.pkg.dev
+  _AR_HOSTNAME: southamerica-east1-docker.pkg.dev
   _AR_PROJECT_ID: corded-gear-422601-i2
   _AR_REPOSITORY: cloud-run-source-deploy
-  _DEPLOY_REGION: europe-west1
+  _DEPLOY_REGION: southamerica-east1
   _PLATFORM: managed
   _SERVICE_NAME: shopify-store-dashboard
