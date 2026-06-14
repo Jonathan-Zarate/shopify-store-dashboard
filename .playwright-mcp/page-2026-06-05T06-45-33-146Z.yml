@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - banner [ref=e6]:
+        - generic [ref=e7]:
+          - link "Supabase" [ref=e9] [cursor=pointer]:
+            - /url: /dashboard/organizations
+            - img "Supabase" [ref=e10]
+          - generic [ref=e11]:
+            - generic [ref=e13] [cursor=pointer]: Feedback
+            - generic [ref=e14]:
+              - button "Search..." [ref=e15]:
+                - generic [ref=e16]:
+                  - img [ref=e17]
+                  - paragraph [ref=e20]: Search...
+                - generic [ref=e22]: Ctrl K
+              - button "Help" [ref=e23] [cursor=pointer]:
+                - generic [ref=e24]:
+                  - img [ref=e25]
+                  - generic [ref=e28]: Help
+              - button "Advisor Center" [ref=e30] [cursor=pointer]:
+                - generic [ref=e31]:
+                  - img [ref=e32]
+                  - generic [ref=e34]: Advisor Center
+            - button [ref=e35] [cursor=pointer]:
+              - img [ref=e38]
+      - generic [ref=e40]:
+        - button "Sidebar control" [ref=e48] [cursor=pointer]:
+          - img [ref=e50]
+        - main [ref=e57]:
+          - list [ref=e60]:
+            - generic [ref=e63]:
+              - paragraph [ref=e64]
+              - paragraph [ref=e65]
+            - generic [ref=e68]:
+              - paragraph [ref=e69]
+              - paragraph [ref=e70]
+    - generic [ref=e74]:
+      - generic:
+        - img "Background pattern"
+      - generic [ref=e75]:
+        - button "Close banner" [ref=e77] [cursor=pointer]:
+          - img [ref=e79]
+        - generic [ref=e82]:
+          - generic [ref=e83]: Notice
+          - generic [ref=e84]:
+            - paragraph [ref=e85]: We've updated our Terms of Service
+            - paragraph [ref=e86]: Updates define the responsibilities of both you and Supabase in the use of AI.
+          - button "Learn more" [ref=e87] [cursor=pointer]:
+            - generic [ref=e88]: Learn more
+  - alert [ref=e89]

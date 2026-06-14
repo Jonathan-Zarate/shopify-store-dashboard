@@ -7,9 +7,10 @@ const path     = require('path');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
-const SHOP  = process.env.SHOPIFY_SHOP;   // e.g. reechai.myshopify.com
+const SHOP  = process.env.SHOPIFY_STORE;   // e.g. reechai.myshopify.com
 const TOKEN = process.env.SHOPIFY_TOKEN;  // shpat_...
 const API_V = '2024-10';
+const BIGQUERY_API = process.env.BIGQUERY_API_URL || 'https://bigquery-to-api-4933250423.southamerica-east1.run.app';
 
 app.use(cors());
 app.use(express.json());
@@ -36,29 +37,34 @@ function missingConfig(res) {
 }
 
 // ── GET /api/products ─────────────────────────────────────────
-// Fetches all pages from Shopify (max 250/page) and returns them merged
 app.get('/api/products', async (req, res) => {
-  if (missingConfig(res)) return;
   try {
-    let all = [];
-    let url = shopifyUrl('/products.json?limit=250&fields=id,title,status,product_type,vendor,created_at,updated_at,images');
+    const [bqRes, shopifyRes] = await Promise.all([
+      fetch(BIGQUERY_API),
+      fetch(shopifyUrl('/products.json?limit=250&fields=id,images'), { headers: shopifyHeaders() }),
+    ]);
 
-    while (url) {
-      const r = await fetch(url, { headers: shopifyHeaders() });
-      if (!r.ok) {
-        const text = await r.text();
-        return res.status(r.status).json({ error: text });
-      }
-      const data = await r.json();
-      all = all.concat(data.products || []);
-
-      // Follow pagination via Link header
-      const link = r.headers.get('link') || '';
-      const next = link.match(/<([^>]+)>;\s*rel="next"/);
-      url = next ? next[1] : null;
+    if (!bqRes.ok) {
+      const text = await bqRes.text();
+      return res.status(bqRes.status).json({ error: text });
     }
 
-    res.json({ products: all, total: all.length, status: 'success' });
+    const bqData  = await bqRes.json();
+    const seen    = new Set();
+    const products = (bqData.products || []).filter(p => {
+      if (seen.has(p.id)) return false;
+      seen.add(p.id);
+      return true;
+    });
+
+    if (shopifyRes.ok) {
+      const shopifyData = await shopifyRes.json();
+      const imageMap = {};
+      (shopifyData.products || []).forEach(p => { imageMap[p.id] = p.images || []; });
+      products.forEach(p => { p.images = imageMap[p.id] || []; });
+    }
+
+    res.json({ products, total: products.length, status: 'success' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -113,6 +119,31 @@ app.delete('/api/products/:id', async (req, res) => {
       return res.status(r.status).json(data);
     }
     res.json({ success: true, id: req.params.id });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── GET /api/images ───────────────────────────────────────────
+app.get('/api/images', async (req, res) => {
+  if (missingConfig(res)) return;
+  try {
+    const images = [];
+    let url = shopifyUrl('/products.json?limit=250&fields=id,title,images');
+    while (url) {
+      const r = await fetch(url, { headers: shopifyHeaders() });
+      if (!r.ok) return res.status(r.status).json({ error: await r.text() });
+      const data = await r.json();
+      (data.products || []).forEach(p => {
+        (p.images || []).forEach(img => {
+          images.push({ id: img.id, src: img.src, alt: img.alt || p.title, product_title: p.title });
+        });
+      });
+      const link = r.headers.get('link') || '';
+      const next = link.match(/<([^>]+)>;\s*rel="next"/);
+      url = next ? next[1] : null;
+    }
+    res.json({ images });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

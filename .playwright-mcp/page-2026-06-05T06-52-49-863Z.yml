@@ -1,0 +1,104 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e5]
+        - generic [ref=e9]: Supabase
+      - generic [ref=e11] [cursor=pointer]:
+        - generic [ref=e12]: R
+        - generic [ref=e13]:
+          - generic [ref=e14]: Organization
+          - generic [ref=e15]: reechai
+        - img [ref=e16]
+      - navigation [ref=e18]:
+        - generic [ref=e19]: Organization
+        - link "Projects" [ref=e20] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e21]
+          - generic [ref=e24]: Projects
+        - link "Team" [ref=e25] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e26]
+          - generic [ref=e31]: Team
+        - link "Billing" [ref=e32] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e33]
+          - generic [ref=e35]: Billing
+        - link "Integrations" [ref=e36] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e37]
+          - generic [ref=e40]: Integrations
+        - link "Settings" [ref=e41] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e42]
+          - generic [ref=e45]: Settings
+    - generic [ref=e46]:
+      - link "Documentation" [ref=e47] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e48]
+        - generic [ref=e51]: Documentation
+      - link "GitHub" [ref=e52] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e53]
+        - generic [ref=e55]: GitHub
+  - generic [ref=e56]:
+    - banner [ref=e57]:
+      - navigation [ref=e59]:
+        - generic [ref=e60] [cursor=pointer]: reechai
+        - img [ref=e61]
+        - generic [ref=e63]: Projects
+      - generic [ref=e64]:
+        - button "Search... ⌘K" [ref=e65] [cursor=pointer]:
+          - img [ref=e66]
+          - generic [ref=e69]: Search...
+          - generic [ref=e70]: ⌘K
+        - button "Notifications" [ref=e71] [cursor=pointer]:
+          - img [ref=e72]
+        - button "Feedback" [ref=e75] [cursor=pointer]:
+          - img [ref=e76]
+        - generic "Account" [ref=e78] [cursor=pointer]: J
+    - main [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - heading "Projects" [level=1] [ref=e82]
+          - paragraph [ref=e83]: All projects within the reechai organization
+        - button "New project" [ref=e84] [cursor=pointer]:
+          - img [ref=e85]
+          - text: New project
+      - generic [ref=e86]:
+        - generic [ref=e87] [cursor=pointer]:
+          - generic [ref=e90]:
+            - img [ref=e91]
+            - text: East US (North Virginia)
+          - generic [ref=e94]:
+            - img [ref=e96]
+            - heading "production-app" [level=3] [ref=e100]
+            - paragraph [ref=e101]: PostgreSQL · 15.1.0.117
+          - generic [ref=e102]:
+            - generic [ref=e103]: Free
+            - generic [ref=e104]: Created 3 months ago
+        - generic [ref=e105] [cursor=pointer]:
+          - generic [ref=e108]:
+            - img [ref=e109]
+            - text: West EU (Ireland)
+          - generic [ref=e112]:
+            - img [ref=e114]
+            - heading "staging-db" [level=3] [ref=e118]
+            - paragraph [ref=e119]: PostgreSQL · 15.1.0.117
+          - generic [ref=e120]:
+            - generic [ref=e121]: Pro
+            - generic [ref=e122]: Created 1 month ago
+        - generic [ref=e123] [cursor=pointer]:
+          - generic [ref=e126]:
+            - img [ref=e127]
+            - text: Southeast Asia (Singapore)
+          - generic [ref=e130]:
+            - img [ref=e132]
+            - heading "dev-sandbox" [level=3] [ref=e136]
+            - paragraph [ref=e137]: PostgreSQL · 15.1.0.117
+          - generic [ref=e138]:
+            - generic [ref=e139]: Free
+            - generic [ref=e140]: Paused
+        - generic [ref=e142] [cursor=pointer]:
+          - img [ref=e144]
+          - generic [ref=e145]: New project

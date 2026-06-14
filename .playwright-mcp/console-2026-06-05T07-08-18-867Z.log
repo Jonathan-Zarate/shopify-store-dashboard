@@ -1,0 +1,2 @@
+[  411305ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:5501/api/products:0
+[  412585ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://127.0.0.1:5501/api/products:0

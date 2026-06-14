@@ -11,6 +11,7 @@ let currentType   = '';
 let currentPage   = 1;
 let pendingDeleteId = null;
 let isSaving      = false;
+let cachedImages  = null;
 
 // ── Helpers ───────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
@@ -256,13 +257,68 @@ const openDeleteModal  = () => $('deleteOverlay').classList.add('open');
 const closeDeleteModal = () => $('deleteOverlay').classList.remove('open');
 
 function clearForm() {
-  $('editId').value      = '';
-  $('fieldTitle').value  = '';
-  $('fieldType').value   = '';
-  $('fieldVendor').value = '';
+  $('editId').value        = '';
+  $('fieldTitle').value    = '';
+  $('fieldType').value     = '';
+  $('fieldVendor').value   = '';
+  $('fieldImageSrc').value = '';
   document.querySelector('input[name="status"][value="active"]').checked = true;
   $('formError').textContent = '';
   setSaving(false);
+}
+
+// ── Image picker ──────────────────────────────────────────────
+async function loadImagePicker(selectedSrc = '') {
+  const wrap = $('imagePickerWrap');
+  if (!cachedImages) {
+    wrap.innerHTML = '<div class="img-picker-msg">Loading images…</div>';
+    try {
+      const data = await apiFetch('/api/images');
+      cachedImages = data.images || [];
+    } catch {
+      wrap.innerHTML = '<div class="img-picker-msg">Could not load images.</div>';
+      return;
+    }
+  }
+  renderImagePicker(selectedSrc);
+}
+
+function renderImagePicker(selectedSrc = '') {
+  const wrap = $('imagePickerWrap');
+  const grid = document.createElement('div');
+  grid.className = 'img-picker-grid';
+
+  const none = document.createElement('div');
+  none.className = 'img-picker-none' + (!selectedSrc ? ' selected' : '');
+  none.title = 'No image';
+  none.textContent = '×';
+  none.addEventListener('click', () => selectImage(''));
+  grid.appendChild(none);
+
+  cachedImages.forEach(img => {
+    const item = document.createElement('div');
+    item.className = 'img-picker-item' + (img.src === selectedSrc ? ' selected' : '');
+    item.title = img.product_title;
+    const el = document.createElement('img');
+    el.src = img.src;
+    el.alt = img.alt;
+    el.loading = 'lazy';
+    item.appendChild(el);
+    item.addEventListener('click', () => selectImage(img.src));
+    grid.appendChild(item);
+  });
+
+  wrap.innerHTML = '';
+  wrap.appendChild(grid);
+}
+
+function selectImage(src) {
+  $('fieldImageSrc').value = src;
+  document.querySelectorAll('.img-picker-item').forEach(el =>
+    el.classList.toggle('selected', el.querySelector('img')?.src === src && src !== '')
+  );
+  const none = document.querySelector('.img-picker-none');
+  if (none) none.classList.toggle('selected', !src);
 }
 
 function validate() {
@@ -286,6 +342,7 @@ $('openAddModal').addEventListener('click', () => {
   $('modalTitle').textContent = 'Add product';
   clearForm();
   openModal();
+  loadImagePicker('');
 });
 
 // ── Edit ──────────────────────────────────────────────────────
@@ -301,6 +358,8 @@ function openEdit(id) {
   $('formError').textContent = '';
   setSaving(false);
   openModal();
+  const currentImg = (p.images && p.images.length > 0) ? p.images[0].src : '';
+  loadImagePicker(currentImg);
 }
 
 // ── Save ──────────────────────────────────────────────────────
@@ -315,6 +374,8 @@ $('saveBtn').addEventListener('click', async () => {
     vendor:       $('fieldVendor').value.trim(),
     status:       document.querySelector('input[name="status"]:checked').value,
   };
+  const imageSrc = $('fieldImageSrc').value;
+  if (imageSrc) payload.images = [{ src: imageSrc }];
 
   try {
     if (id) {
