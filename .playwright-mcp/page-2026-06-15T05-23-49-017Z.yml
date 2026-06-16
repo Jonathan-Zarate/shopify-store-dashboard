@@ -1,0 +1,471 @@
+- generic [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e5]
+        - generic [ref=e8]: StoreAdmin
+      - generic [ref=e10] [cursor=pointer]:
+        - generic [ref=e11]: R
+        - generic [ref=e12]:
+          - generic [ref=e13]: Shopify Store
+          - generic [ref=e14]: reechai-shop
+        - img [ref=e15]
+      - navigation [ref=e17]:
+        - generic [ref=e18]: Catalog
+        - link "Products 18" [ref=e137] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e20]
+          - generic [ref=e23]: Products
+          - generic [ref=e24]: "18"
+        - link "Orders" [ref=e25] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e26]
+          - generic [ref=e29]: Orders
+        - link "Customers" [ref=e30] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e31]
+          - generic [ref=e34]: Customers
+        - link "Collections —" [ref=e35] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e36]
+          - generic [ref=e41]: Collections
+          - generic [ref=e42]: —
+        - generic [ref=e43]: Tools
+        - link "Meetings" [ref=e44] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e45]
+          - generic [ref=e47]: Meetings
+        - link "Assistant" [ref=e48] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e49]
+          - generic [ref=e51]: Assistant
+        - generic [ref=e52]: Store
+        - link "Analytics" [ref=e53] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e54]
+          - generic [ref=e56]: Analytics
+        - link "Settings" [ref=e57] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e58]
+          - generic [ref=e61]: Settings
+    - link "Shopify Docs" [ref=e63] [cursor=pointer]:
+      - /url: "#"
+      - img [ref=e64]
+      - generic [ref=e67]: Shopify Docs
+  - generic [ref=e68]:
+    - banner [ref=e69]:
+      - navigation [ref=e71]:
+        - generic [ref=e72]: reechai-shop
+        - img [ref=e73]
+        - generic [ref=e75]: Products
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - img [ref=e78]
+          - textbox "Search products…" [ref=e81]
+          - generic [ref=e82]: ⌘K
+        - button "Notifications" [ref=e83] [cursor=pointer]:
+          - img [ref=e84]
+        - generic "Account" [ref=e88] [cursor=pointer]: J
+    - main [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - heading "Products" [level=1] [ref=e92]
+          - paragraph [ref=e93]: Manage your Shopify store catalog · 18 products · Shopify live
+        - generic [ref=e94]:
+          - button "Refresh" [ref=e95] [cursor=pointer]:
+            - img [ref=e96]
+            - text: Refresh
+          - button "Add product" [ref=e99] [cursor=pointer]:
+            - img [ref=e100]
+            - text: Add product
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - generic [ref=e103]: "18"
+          - generic [ref=e105]: Total
+        - generic [ref=e106]:
+          - generic [ref=e107]: "17"
+          - generic [ref=e109]: Active
+        - generic [ref=e110]:
+          - generic [ref=e111]: "1"
+          - generic [ref=e113]: Draft
+        - generic [ref=e114]:
+          - generic [ref=e115]: "0"
+          - generic [ref=e117]: Archived
+      - generic [ref=e118]:
+        - generic [ref=e120]:
+          - button "All" [active] [ref=e121] [cursor=pointer]
+          - button "Active" [ref=e122] [cursor=pointer]
+          - button "Draft" [ref=e123] [cursor=pointer]
+          - button "Archived" [ref=e124] [cursor=pointer]
+        - generic [ref=e125]:
+          - combobox [ref=e126] [cursor=pointer]:
+            - option "All types" [selected]
+            - option "Snowboard"
+            - option "accessories"
+            - option "giftcard"
+            - option "snowboard"
+          - combobox [ref=e127] [cursor=pointer]:
+            - 'option "Sort: Name A→Z" [selected]'
+            - 'option "Sort: Name Z→A"'
+            - option "Newest first"
+            - option "Oldest first"
+      - generic [ref=e138]:
+        - generic [ref=e476] [cursor=pointer]:
+          - generic [ref=e477]:
+            - img "Gift Card" [ref=e478]
+            - generic [ref=e479]: active
+            - generic [ref=e480]:
+              - button "Inventory" [ref=e481]:
+                - img [ref=e482]
+              - button "Edit" [ref=e485]:
+                - img [ref=e486]
+              - button "Delete" [ref=e489]:
+                - img [ref=e490]
+          - generic [ref=e493]:
+            - generic "Gift Card" [ref=e494]
+            - generic [ref=e495]:
+              - generic [ref=e496]: giftcard
+              - generic "Snowboard Vendor" [ref=e497]
+            - generic [ref=e498]:
+              - generic [ref=e499]: $10.00
+              - generic [ref=e500]: Jun 2, 2026
+        - generic [ref=e501] [cursor=pointer]:
+          - generic [ref=e502]:
+            - img "Producto de Prueba Claude" [ref=e503]
+            - generic [ref=e504]: active
+            - generic [ref=e505]:
+              - button "Inventory" [ref=e506]:
+                - img [ref=e507]
+              - button "Edit" [ref=e510]:
+                - img [ref=e511]
+              - button "Delete" [ref=e514]:
+                - img [ref=e515]
+          - generic [ref=e518]:
+            - generic "Producto de Prueba Claude" [ref=e519]
+            - generic [ref=e520]:
+              - generic [ref=e521]: snowboard
+              - generic "Test Vendor" [ref=e522]
+            - generic [ref=e523]:
+              - generic [ref=e524]: $0.00
+              - generic [ref=e525]: Jun 9, 2026
+        - generic [ref=e526] [cursor=pointer]:
+          - generic [ref=e527]:
+            - img "Selling Plans Ski Wax" [ref=e528]
+            - generic [ref=e529]: active
+            - generic [ref=e530]:
+              - button "Inventory" [ref=e531]:
+                - img [ref=e532]
+              - button "Edit" [ref=e535]:
+                - img [ref=e536]
+              - button "Delete" [ref=e539]:
+                - img [ref=e540]
+          - generic [ref=e543]:
+            - generic "Selling Plans Ski Wax" [ref=e544]
+            - generic [ref=e545]:
+              - generic [ref=e546]: accessories
+              - generic "Test-Reech" [ref=e547]
+            - generic [ref=e548]:
+              - generic [ref=e549]: $24.95
+              - generic [ref=e550]: Jun 2, 2026
+        - generic [ref=e551] [cursor=pointer]:
+          - generic [ref=e552]:
+            - img "Snowboard de Prueba" [ref=e553]
+            - generic [ref=e554]: active
+            - generic [ref=e555]:
+              - button "Inventory" [ref=e556]:
+                - img [ref=e557]
+              - button "Edit" [ref=e560]:
+                - img [ref=e561]
+              - button "Delete" [ref=e564]:
+                - img [ref=e565]
+          - generic [ref=e568]:
+            - generic "Snowboard de Prueba" [ref=e569]
+            - generic [ref=e570]:
+              - generic [ref=e571]: snowboard
+              - generic "Reech Brand" [ref=e572]
+            - generic [ref=e573]:
+              - generic [ref=e574]: $0.00
+              - generic [ref=e575]: Jun 9, 2026
+        - generic [ref=e576] [cursor=pointer]:
+          - generic [ref=e577]:
+            - img "The 3p Fulfilled Snowboard" [ref=e578]
+            - generic [ref=e579]: active
+            - generic [ref=e580]:
+              - button "Inventory" [ref=e581]:
+                - img [ref=e582]
+              - button "Edit" [ref=e585]:
+                - img [ref=e586]
+              - button "Delete" [ref=e589]:
+                - img [ref=e590]
+          - generic [ref=e593]:
+            - generic "The 3p Fulfilled Snowboard" [ref=e594]
+            - generic [ref=e595]:
+              - generic [ref=e596]: snowboard
+              - generic "Test-Reech" [ref=e597]
+            - generic [ref=e598]:
+              - generic [ref=e599]: $2,629.95
+              - generic [ref=e600]: Jun 2, 2026
+        - generic [ref=e601] [cursor=pointer]:
+          - generic [ref=e602]:
+            - img "The Archived Snowboard" [ref=e603]
+            - generic [ref=e604]: active
+            - generic [ref=e605]:
+              - button "Inventory" [ref=e606]:
+                - img [ref=e607]
+              - button "Edit" [ref=e610]:
+                - img [ref=e611]
+              - button "Delete" [ref=e614]:
+                - img [ref=e615]
+          - generic [ref=e618]:
+            - generic "The Archived Snowboard" [ref=e619]
+            - generic [ref=e620]:
+              - generic [ref=e621]: snowboard
+              - generic "Snowboard Vendor" [ref=e622]
+            - generic [ref=e623]:
+              - generic [ref=e624]: $629.95
+              - generic [ref=e625]: Jun 2, 2026
+        - generic [ref=e626] [cursor=pointer]:
+          - generic [ref=e627]:
+            - 'img "The Collection Snowboard: Hydrogen" [ref=e628]'
+            - generic [ref=e629]: active
+            - generic [ref=e630]:
+              - button "Inventory" [ref=e631]:
+                - img [ref=e632]
+              - button "Edit" [ref=e635]:
+                - img [ref=e636]
+              - button "Delete" [ref=e639]:
+                - img [ref=e640]
+          - generic [ref=e643]:
+            - 'generic "The Collection Snowboard: Hydrogen" [ref=e644]'
+            - generic [ref=e645]:
+              - generic [ref=e646]: snowboard
+              - generic "Hydrogen Vendor" [ref=e647]
+            - generic [ref=e648]:
+              - generic [ref=e649]: $600.00
+              - generic [ref=e650]: Jun 2, 2026
+        - generic [ref=e651] [cursor=pointer]:
+          - generic [ref=e652]:
+            - 'img "The Collection Snowboard: Liquid" [ref=e653]'
+            - generic [ref=e654]: active
+            - generic [ref=e655]:
+              - button "Inventory" [ref=e656]:
+                - img [ref=e657]
+              - button "Edit" [ref=e660]:
+                - img [ref=e661]
+              - button "Delete" [ref=e664]:
+                - img [ref=e665]
+          - generic [ref=e668]:
+            - 'generic "The Collection Snowboard: Liquid" [ref=e669]'
+            - generic [ref=e670]:
+              - generic [ref=e671]: snowboard
+              - generic "Hydrogen Vendor" [ref=e672]
+            - generic [ref=e673]:
+              - generic [ref=e674]: $749.95
+              - generic [ref=e675]: Jun 2, 2026
+        - generic [ref=e676] [cursor=pointer]:
+          - generic [ref=e677]:
+            - 'img "The Collection Snowboard: Oxygen" [ref=e678]'
+            - generic [ref=e679]: active
+            - generic [ref=e680]:
+              - button "Inventory" [ref=e681]:
+                - img [ref=e682]
+              - button "Edit" [ref=e685]:
+                - img [ref=e686]
+              - button "Delete" [ref=e689]:
+                - img [ref=e690]
+          - generic [ref=e693]:
+            - 'generic "The Collection Snowboard: Oxygen" [ref=e694]'
+            - generic [ref=e695]:
+              - generic [ref=e696]: snowboard
+              - generic "Hydrogen Vendor" [ref=e697]
+            - generic [ref=e698]:
+              - generic [ref=e699]: $1,025.00
+              - generic [ref=e700]: Jun 2, 2026
+        - generic [ref=e701] [cursor=pointer]:
+          - generic [ref=e702]:
+            - img "The Compare at Price Snowboard" [ref=e703]
+            - generic [ref=e704]: active
+            - generic [ref=e705]:
+              - button "Inventory" [ref=e706]:
+                - img [ref=e707]
+              - button "Edit" [ref=e710]:
+                - img [ref=e711]
+              - button "Delete" [ref=e714]:
+                - img [ref=e715]
+          - generic [ref=e718]:
+            - generic "The Compare at Price Snowboard" [ref=e719]
+            - generic [ref=e720]:
+              - generic [ref=e721]: snowboard
+              - generic "Test-Reech" [ref=e722]
+            - generic [ref=e723]:
+              - generic [ref=e724]: $785.95
+              - generic [ref=e725]: Jun 2, 2026
+        - generic [ref=e726] [cursor=pointer]:
+          - generic [ref=e727]:
+            - img "The Complete Snowboard" [ref=e728]
+            - generic [ref=e729]: active
+            - generic [ref=e730]:
+              - button "Inventory" [ref=e731]:
+                - img [ref=e732]
+              - button "Edit" [ref=e735]:
+                - img [ref=e736]
+              - button "Delete" [ref=e739]:
+                - img [ref=e740]
+          - generic [ref=e743]:
+            - generic "The Complete Snowboard" [ref=e744]
+            - generic [ref=e745]:
+              - generic [ref=e746]: snowboard
+              - generic "Snowboard Vendor" [ref=e747]
+            - generic [ref=e748]:
+              - generic [ref=e749]: $699.95
+              - generic [ref=e750]: Jun 2, 2026
+        - generic [ref=e751] [cursor=pointer]:
+          - generic [ref=e752]:
+            - img "The Draft Snowboard" [ref=e753]
+            - generic [ref=e754]: active
+            - generic [ref=e755]:
+              - button "Inventory" [ref=e756]:
+                - img [ref=e757]
+              - button "Edit" [ref=e760]:
+                - img [ref=e761]
+              - button "Delete" [ref=e764]:
+                - img [ref=e765]
+          - generic [ref=e768]:
+            - generic "The Draft Snowboard" [ref=e769]
+            - generic [ref=e770]:
+              - generic [ref=e771]: Snowboard
+              - generic "Snowboard Vendedor" [ref=e772]
+            - generic [ref=e773]:
+              - generic [ref=e774]: $0.00
+              - generic [ref=e775]: Jun 5, 2026
+      - generic [ref=e439]:
+        - generic [ref=e440]: Showing 1–12 of 18 products
+        - generic [ref=e441]:
+          - button [disabled] [ref=e442]:
+            - img [ref=e443]
+          - generic [ref=e445]:
+            - button "1" [ref=e776] [cursor=pointer]
+            - button "2" [ref=e777] [cursor=pointer]
+          - button [ref=e448] [cursor=pointer]:
+            - img [ref=e449]
+  - generic:
+    - generic:
+      - generic:
+        - heading "Add product" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic:
+          - generic:
+            - generic: Product title *
+            - textbox "e.g. Classic Snowboard Pro"
+        - generic:
+          - generic:
+            - generic: Product type
+            - textbox "e.g. snowboard"
+          - generic:
+            - generic: Vendor
+            - textbox "e.g. Snowboard Vendor"
+        - generic:
+          - generic:
+            - generic: Description
+            - generic:
+              - button "Generate":
+                - img
+                - text: Generate
+              - button "Improve":
+                - img
+                - text: Improve
+          - textbox "Product description…"
+        - generic:
+          - generic: Status
+          - generic:
+            - generic:
+              - radio "Active" [checked]
+              - text: Active
+            - generic:
+              - radio "Draft"
+              - text: Draft
+            - generic:
+              - radio "Archived"
+              - text: Archived
+        - generic:
+          - generic: Image
+          - generic:
+            - generic: Loading images…
+      - generic:
+        - button "Cancel"
+        - button "Save product"
+  - generic:
+    - generic:
+      - generic:
+        - heading "Delete product" [level=2]
+        - button:
+          - img
+      - generic:
+        - paragraph:
+          - text: Are you sure you want to delete
+          - strong
+          - text: "? This action cannot be undone."
+      - generic:
+        - button "Cancel"
+        - button "Delete"
+  - generic:
+    - generic:
+      - generic:
+        - heading "New collection" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic:
+          - generic: Collection name *
+          - textbox "e.g. Red Products"
+        - generic:
+          - generic: Match
+          - generic:
+            - generic:
+              - radio "All conditions (AND)" [checked]
+              - text: All conditions (AND)
+            - generic:
+              - radio "Any condition (OR)"
+              - text: Any condition (OR)
+        - generic:
+          - generic: Rules
+          - generic:
+            - generic:
+              - combobox:
+                - option "Product type" [selected]
+                - option "Vendor"
+                - option "Title"
+                - option "Tag"
+                - option "Variant title"
+              - combobox:
+                - option "equals" [selected]
+                - option "not equals"
+                - option "contains"
+                - option "starts with"
+              - textbox "Value…"
+          - button "+ Add rule"
+      - generic:
+        - button "Cancel"
+        - button "Create collection"
+  - generic:
+    - generic:
+      - generic:
+        - heading "Collection products" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic: Loading…
+      - generic:
+        - button "Close"
+  - generic:
+    - generic:
+      - generic:
+        - heading "Inventory" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic: Loading inventory…
+      - generic:
+        - button "Close"
