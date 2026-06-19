@@ -1,0 +1,4 @@
+[     942ms] [LOG] Initialize smartbanner @ https://napps-storage.b-cdn.net/scripts/smartbanner.js?napps=1&shopId=algobonitoeshop&v=1.4:8
+[     947ms] [LOG] Zapiet - Could not locate [name="checkout"] please manually add <div id="storePickupApp"></div> to your cart page. @ https://cdn.shopify.com/extensions/019ee004-e056-7b09-8a96-282c3a40665e/zapiet-pickup-delivery-1314/assets/storepickup.js:1
+[     947ms] [WARNING] Zapiet cart widget detected that the checkout button is outside the cart form. It might cause issues with locking the checkout button. @ https://cdn.shopify.com/extensions/019ee004-e056-7b09-8a96-282c3a40665e/zapiet-pickup-delivery-1314/assets/storepickup.js:1
+[    1357ms] [WARNING] [Meta Pixel] - Duplicate Pixel ID: 359110424578401. @ https://connect.facebook.net/en_US/fbevents.js:183

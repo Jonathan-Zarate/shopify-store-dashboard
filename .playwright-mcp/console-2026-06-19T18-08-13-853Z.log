@@ -1,0 +1,6 @@
+[     830ms] [LOG] Zapiet - Could not locate [name="checkout"] please manually add <div id="storePickupApp"></div> to your cart page. @ https://cdn.shopify.com/extensions/019ee004-e056-7b09-8a96-282c3a40665e/zapiet-pickup-delivery-1314/assets/storepickup.js:1
+[     830ms] [WARNING] Zapiet cart widget detected that the checkout button is outside the cart form. It might cause issues with locking the checkout button. @ https://cdn.shopify.com/extensions/019ee004-e056-7b09-8a96-282c3a40665e/zapiet-pickup-delivery-1314/assets/storepickup.js:1
+[     832ms] [LOG] Initialize smartbanner @ https://napps-storage.b-cdn.net/scripts/smartbanner.js?napps=1&shopId=algobonitoeshop&v=1.4:8
+[    1196ms] [WARNING] [Meta Pixel] - Duplicate Pixel ID: 359110424578401. @ https://connect.facebook.net/en_US/fbevents.js:183
+[    2429ms] [WARNING] This monitoring code is outdated. Please implement a new version for more efficient performance. You can find it at Integrations -> Monitoring Code section in your Salesmanago panel. @ https://app3.salesmanago.pl/static/sm.js:0
+[    2454ms] [WARNING] [WebPush Module] No Web Push consents to run @ https://app3.salesmanago.pl/static/chunk/WebPushModule.40edfaa8e7fbdb1f7026.js:0

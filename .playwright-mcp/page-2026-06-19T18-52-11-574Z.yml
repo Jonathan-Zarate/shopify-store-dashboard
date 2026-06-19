@@ -1,0 +1,249 @@
+- generic [ref=e1]:
+  - complementary [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e5]
+        - generic [ref=e8]: StoreAdmin
+      - generic [ref=e10] [cursor=pointer]:
+        - generic [ref=e11]: R
+        - generic [ref=e12]:
+          - generic [ref=e13]: Shopify Store
+          - generic [ref=e14]: reechai-shop
+        - img [ref=e15]
+      - navigation [ref=e17]:
+        - generic [ref=e18]: Catalog
+        - link "Products —" [ref=e19] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e20]
+          - generic [ref=e23]: Products
+          - generic [ref=e24]: —
+        - link "Orders" [ref=e25] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e26]
+          - generic [ref=e29]: Orders
+        - link "Customers" [ref=e30] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e31]
+          - generic [ref=e34]: Customers
+        - link "Collections —" [ref=e35] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e36]
+          - generic [ref=e41]: Collections
+          - generic [ref=e42]: —
+        - generic [ref=e43]: Tools
+        - link "Meetings" [ref=e44] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e45]
+          - generic [ref=e47]: Meetings
+        - generic [ref=e48]: Store
+        - link "Analytics" [ref=e49] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e50]
+          - generic [ref=e52]: Analytics
+        - link "Settings" [ref=e53] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e54]
+          - generic [ref=e57]: Settings
+    - link "Shopify Docs" [ref=e59] [cursor=pointer]:
+      - /url: "#"
+      - img [ref=e60]
+      - generic [ref=e63]: Shopify Docs
+  - generic [ref=e64]:
+    - banner [ref=e65]:
+      - navigation [ref=e67]:
+        - generic [ref=e68]: reechai-shop
+        - img [ref=e69]
+        - generic [ref=e71]: Products
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - img [ref=e74]
+          - textbox "Search products…" [ref=e77]
+          - generic [ref=e78]: ⌘K
+        - button "Notifications" [ref=e79] [cursor=pointer]:
+          - img [ref=e80]
+        - generic "Account" [ref=e84] [cursor=pointer]: J
+    - main [ref=e85]:
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - heading "Products" [level=1] [ref=e88]
+          - paragraph [ref=e89]: Manage your Shopify store catalog · Loading…
+        - generic [ref=e90]:
+          - button "Refresh" [ref=e91] [cursor=pointer]:
+            - img [ref=e92]
+            - text: Refresh
+          - button "Add product" [ref=e95] [cursor=pointer]:
+            - img [ref=e96]
+            - text: Add product
+      - generic [ref=e97]:
+        - generic [ref=e101]: Total
+        - generic [ref=e105]: Active
+        - generic [ref=e109]: Draft
+        - generic [ref=e113]: Archived
+      - generic [ref=e114]:
+        - generic [ref=e116]:
+          - button "All" [ref=e117] [cursor=pointer]
+          - button "Active" [ref=e118] [cursor=pointer]
+          - button "Draft" [ref=e119] [cursor=pointer]
+          - button "Archived" [ref=e120] [cursor=pointer]
+        - generic [ref=e121]:
+          - combobox [ref=e122] [cursor=pointer]:
+            - option "All types" [selected]
+          - combobox [ref=e123] [cursor=pointer]:
+            - 'option "Sort: Name A→Z" [selected]'
+            - 'option "Sort: Name Z→A"'
+            - option "Newest first"
+            - option "Oldest first"
+      - generic [ref=e137]:
+        - img [ref=e138]
+        - paragraph [ref=e140]: "request to https://undefined/admin/api/2024-10/products.json?limit=250&fields=id,images,variants failed, reason: getaddrinfo ENOTFOUND undefined"
+        - button "Try again" [ref=e141] [cursor=pointer]
+  - generic:
+    - generic:
+      - generic:
+        - heading "Add product" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic:
+          - generic:
+            - generic: Product title *
+            - textbox "e.g. Classic Snowboard Pro"
+        - generic:
+          - generic:
+            - generic: Product type
+            - textbox "e.g. snowboard"
+          - generic:
+            - generic: Vendor
+            - textbox "e.g. Snowboard Vendor"
+        - generic:
+          - generic:
+            - generic: Description
+            - generic:
+              - button "Generate":
+                - img
+                - text: Generate
+              - button "Improve":
+                - img
+                - text: Improve
+          - textbox "Product description…"
+        - generic:
+          - generic: Status
+          - generic:
+            - generic:
+              - radio "Active" [checked]
+              - text: Active
+            - generic:
+              - radio "Draft"
+              - text: Draft
+            - generic:
+              - radio "Archived"
+              - text: Archived
+        - generic:
+          - generic: Image
+          - generic:
+            - generic: Loading images…
+      - generic:
+        - button "Cancel"
+        - button "Save product"
+  - generic:
+    - generic:
+      - generic:
+        - heading "Delete product" [level=2]
+        - button:
+          - img
+      - generic:
+        - paragraph:
+          - text: Are you sure you want to delete
+          - strong
+          - text: "? This action cannot be undone."
+      - generic:
+        - button "Cancel"
+        - button "Delete"
+  - generic:
+    - generic:
+      - generic:
+        - heading "New collection" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic:
+          - generic: Collection name *
+          - textbox "e.g. Red Products"
+        - generic:
+          - generic: Match
+          - generic:
+            - generic:
+              - radio "All conditions (AND)" [checked]
+              - text: All conditions (AND)
+            - generic:
+              - radio "Any condition (OR)"
+              - text: Any condition (OR)
+        - generic:
+          - generic: Rules
+          - generic:
+            - generic:
+              - combobox:
+                - option "Product type" [selected]
+                - option "Vendor"
+                - option "Title"
+                - option "Tag"
+                - option "Variant title"
+              - combobox:
+                - option "equals" [selected]
+                - option "not equals"
+                - option "contains"
+                - option "starts with"
+              - textbox "Value…"
+          - button "+ Add rule"
+      - generic:
+        - button "Cancel"
+        - button "Create collection"
+  - generic:
+    - generic:
+      - generic:
+        - heading "Collection products" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic: Loading…
+      - generic:
+        - button "Close"
+  - generic:
+    - generic:
+      - generic:
+        - heading "Inventory" [level=2]
+        - button:
+          - img
+      - generic:
+        - generic: Loading inventory…
+      - generic:
+        - button "Close"
+  - dialog "Asistente de compras" [ref=e142]:
+    - generic [ref=e143]:
+      - generic [ref=e144]:
+        - img [ref=e146]
+        - generic [ref=e148]:
+          - generic [ref=e149]: Shopping Assistant
+          - generic [ref=e150]: Conectado
+      - generic [ref=e151]:
+        - button "Clear chat" [ref=e152] [cursor=pointer]:
+          - img [ref=e153]
+        - button "Close" [ref=e155] [cursor=pointer]:
+          - img [ref=e156]
+    - generic [ref=e160]:
+      - img [ref=e162]
+      - heading "¡Hola! Soy tu asistente de compras" [level=3] [ref=e165]
+      - paragraph [ref=e166]:
+        - text: Puedo ayudarte a encontrar el producto perfecto,
+        - text: comparar opciones y verificar disponibilidad en tiempo real.
+      - generic [ref=e167]:
+        - button "¿Qué productos tienen disponibles?" [ref=e168] [cursor=pointer]
+        - button "¿Cuál es el más vendido?" [ref=e169] [cursor=pointer]
+        - button "¿Tienen algo para principiantes?" [ref=e170] [cursor=pointer]
+        - button "¿Qué recomiendan para regalo?" [ref=e171] [cursor=pointer]
+    - generic [ref=e172]:
+      - textbox "Pregunta sobre productos, precios, disponibilidad…" [active] [ref=e173]
+      - button "Enviar" [ref=e174] [cursor=pointer]:
+        - img [ref=e175]
+  - button "Abrir asistente" [ref=e133] [cursor=pointer]:
+    - img [ref=e179]

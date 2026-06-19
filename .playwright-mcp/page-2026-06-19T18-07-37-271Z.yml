@@ -1,0 +1,259 @@
+- generic [active] [ref=e1]:
+  - link "Ir directamente al contenido" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - generic [ref=e7]:
+      - generic [ref=e8] [cursor=pointer]:
+        - img
+      - generic [ref=e9] [cursor=pointer]:
+        - img
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - img [ref=e13]
+          - text: Descarga ya nuestra APP
+        - link "ENVÍO GRATIS a partir de +59€ o a nuestras tiendas" [ref=e17] [cursor=pointer]:
+          - /url: /collections/eshop
+          - img [ref=e18]
+          - text: ENVÍO GRATIS a partir de +59€ o a nuestras tiendas
+        - link "Club Algo Bonito | Descubre sus ventajas" [ref=e24] [cursor=pointer]:
+          - /url: /pages/club-algo-bonito-preguntas-frecuentes
+          - img [ref=e25]
+          - text: Club Algo Bonito | Descubre sus ventajas
+        - link "JUNTO AL CABO | Ya disponible" [ref=e28] [cursor=pointer]:
+          - /url: /collections/summer
+    - banner [ref=e30]:
+      - generic [ref=e32]:
+        - link "Algo Bonito Algo Bonito" [ref=e33] [cursor=pointer]:
+          - /url: /
+          - img "Algo Bonito" [ref=e34]
+          - img "Algo Bonito" [ref=e35]
+        - menubar [ref=e37]:
+          - menuitem "JUNTO AL CABO" [ref=e38]:
+            - link "JUNTO AL CABO" [ref=e39] [cursor=pointer]:
+              - /url: /collections/summer
+          - menuitem "NOVEDADES" [ref=e40]:
+            - link "NOVEDADES" [ref=e41] [cursor=pointer]:
+              - /url: /collections/novedades
+          - menuitem "ROPA" [ref=e42]:
+            - link "ROPA" [ref=e43] [cursor=pointer]:
+              - /url: "#"
+              - text: ROPA
+              - img [ref=e44]
+          - menuitem "CALZADO Y ACCESORIOS" [ref=e46]:
+            - link "CALZADO Y ACCESORIOS" [ref=e47] [cursor=pointer]:
+              - /url: "#"
+              - text: CALZADO Y ACCESORIOS
+              - img [ref=e48]
+        - generic [ref=e50]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: Actualizar país/región
+            - combobox "Actualizar país/región" [ref=e56]:
+              - option "Español" [selected]
+              - option "português (Portugal)"
+            - generic:
+              - img
+          - link "Mi cuenta" [ref=e57] [cursor=pointer]:
+            - /url: /account/login
+            - img
+          - link [ref=e58] [cursor=pointer]:
+            - /url: "#hero-wishlist"
+            - img [ref=e59]
+          - link "Búsqueda" [ref=e61] [cursor=pointer]:
+            - /url: /search
+            - img
+          - link "0" [ref=e62] [cursor=pointer]:
+            - /url: /cart
+            - generic [ref=e63]:
+              - img
+              - generic [ref=e64]: "0"
+    - main [ref=e65]:
+      - generic [ref=e70]:
+        - heading "Contacta con nosotros" [level=3] [ref=e71]
+        - generic [ref=e72]:
+          - paragraph [ref=e73]:
+            - text: Si tienes alguna duda, quizá la hayamos resuelto en
+            - link "esta página" [ref=e74] [cursor=pointer]:
+              - /url: /pages/preguntas-frecuentes
+            - text: .
+          - paragraph [ref=e75]:
+            - text: Pero si quieres que te asesoremos o necesitas ayuda, no dudes en escribirnos por Whatsapp o mandarnos un email a
+            - link "clientes@algo-bonito.com" [ref=e76] [cursor=pointer]:
+              - /url: mailto:clientes@algo-bonito.com
+          - paragraph [ref=e77]: Si lo prefieres, puedes completar este cuestionario y te responderemos lo antes posible.
+      - generic [ref=e83]:
+        - generic [ref=e85]:
+          - textbox "Nombre" [ref=e86]
+          - generic: Nombre
+        - generic [ref=e88]:
+          - textbox "Correo electrónico" [ref=e89]
+          - generic: Correo electrónico
+        - generic [ref=e91]:
+          - textbox "Número de teléfono" [ref=e92]
+          - generic: Número de teléfono
+        - generic [ref=e94]:
+          - textbox "Comentario" [ref=e95]
+          - generic: Comentario
+        - button "Enviar" [ref=e97] [cursor=pointer]:
+          - generic [ref=e98]: Enviar
+      - generic [ref=e103]:
+        - heading "Horario de atención al cliente" [level=3] [ref=e104]
+        - paragraph [ref=e106]: De 9:00 a 15:00 de lunes a viernes.
+    - contentinfo [ref=e108]:
+      - generic [ref=e109]:
+        - generic [ref=e111]:
+          - button "SOBRE NOSOTROS" [ref=e112] [cursor=pointer]
+          - list [ref=e113]:
+            - listitem [ref=e114]:
+              - link "Conócenos" [ref=e115] [cursor=pointer]:
+                - /url: /pages/about
+            - listitem [ref=e116]:
+              - link "Nuestras tiendas" [ref=e117] [cursor=pointer]:
+                - /url: /pages/store-locator
+            - listitem [ref=e118]:
+              - link "Club Algo Bonito" [ref=e119] [cursor=pointer]:
+                - /url: /pages/club-algo-bonito-preguntas-frecuentes
+            - listitem [ref=e120]:
+              - link "Trabaja con nosotros" [ref=e121] [cursor=pointer]:
+                - /url: https://algo-bonito.com/pages/trabaja-con-nosotros
+            - listitem [ref=e122]:
+              - link "Contacto" [ref=e123] [cursor=pointer]:
+                - /url: /pages/contacto
+        - generic [ref=e125]:
+          - button "AYUDA" [ref=e126] [cursor=pointer]
+          - list [ref=e127]:
+            - listitem [ref=e128]:
+              - link "Preguntas frecuentes" [ref=e129] [cursor=pointer]:
+                - /url: /pages/preguntas-frecuentes
+            - listitem [ref=e130]:
+              - link "Condiciones de compra" [ref=e131] [cursor=pointer]:
+                - /url: /pages/ayuda
+            - listitem [ref=e132]:
+              - link "Política de devolución" [ref=e133] [cursor=pointer]:
+                - /url: /policies/refund-policy
+            - listitem [ref=e134]:
+              - link "Envíos" [ref=e135] [cursor=pointer]:
+                - /url: /pages/envios
+            - listitem [ref=e136]:
+              - link "Devoluciones" [ref=e137] [cursor=pointer]:
+                - /url: /pages/devoluciones
+            - listitem [ref=e138]:
+              - link "Guía de tallas" [ref=e139] [cursor=pointer]:
+                - /url: /pages/size-guide
+            - listitem [ref=e140]:
+              - link "Canal ético" [ref=e141] [cursor=pointer]:
+                - /url: /pages/canal-etico
+        - generic [ref=e143]:
+          - generic [ref=e144]: SÍGUENOS
+          - list [ref=e145]:
+            - listitem [ref=e146]:
+              - link "Facebook" [ref=e147] [cursor=pointer]:
+                - /url: https://www.facebook.com/algobonitoofficial
+                - img [ref=e148]
+                - generic [ref=e149]: Facebook
+            - listitem [ref=e150]:
+              - link "Instagram" [ref=e151] [cursor=pointer]:
+                - /url: https://www.instagram.com/algobonitoofficial/
+                - img [ref=e152]
+                - generic [ref=e154]: Instagram
+            - listitem [ref=e155]:
+              - link "Pinterest" [ref=e156] [cursor=pointer]:
+                - /url: https://www.pinterest.es/algobonitoofficial/
+                - img [ref=e157]
+                - generic [ref=e158]: Pinterest
+            - listitem [ref=e159]:
+              - link "TikTok" [ref=e160] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@algobonitoofficial
+                - img [ref=e161]
+                - generic [ref=e162]: TikTok
+            - listitem [ref=e163]:
+              - link "Linkedin" [ref=e164] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/algo-bonito/
+                - generic [ref=e166]: Linkedin
+        - generic [ref=e168]:
+          - button "POLÍTICAS" [ref=e169] [cursor=pointer]
+          - list [ref=e170]:
+            - listitem [ref=e171]:
+              - link "Aviso Legal" [ref=e172] [cursor=pointer]:
+                - /url: /pages/politica-de-privacidad
+            - listitem [ref=e173]:
+              - link "Política de Privacidad" [ref=e174] [cursor=pointer]:
+                - /url: /pages/politica-de-privacidad
+            - listitem [ref=e175]:
+              - link "Términos del servicio" [ref=e176] [cursor=pointer]:
+                - /url: /policies/terms-of-service
+            - listitem [ref=e177]:
+              - link "Política de Cookies" [ref=e178] [cursor=pointer]:
+                - /url: /pages/politica-de-cookies
+            - listitem [ref=e179]:
+              - link "Consentimiento de Cookies" [ref=e180] [cursor=pointer]:
+                - /url: /policies/privacy-policy
+      - generic [ref=e182]:
+        - generic [ref=e185]:
+          - figure [ref=e186]:
+            - img "American Express" [ref=e187]
+          - figure [ref=e192]:
+            - img "Apple Pay" [ref=e193]
+          - figure [ref=e204]:
+            - img "Google Pay" [ref=e205]
+          - figure [ref=e213]:
+            - img "Maestro" [ref=e214]
+          - figure [ref=e220]:
+            - img "Mastercard" [ref=e221]
+          - figure [ref=e228]:
+            - img "PayPal" [ref=e229]
+          - figure [ref=e235]:
+            - img "Shop Pay" [ref=e236]
+          - figure [ref=e240]:
+            - img "Union Pay" [ref=e241]
+          - figure [ref=e247]:
+            - img "Visa" [ref=e248]
+        - paragraph [ref=e254]: © 2026 Algo Bonito, All rights reserved.
+      - 'button "Selecciona tu región: España / ES" [ref=e259] [cursor=pointer]':
+        - generic [ref=e260]: "Selecciona tu región:"
+        - text: España / ES
+    - generic [ref=e262]:
+      - generic [ref=e264]:
+        - heading "Carrito" [level=4] [ref=e265]
+        - img [ref=e267] [cursor=pointer]
+      - generic [ref=e270]:
+        - img [ref=e271]
+        - paragraph [ref=e280]: Su carrito está vacío.
+        - link "Empieza a comprar" [ref=e281] [cursor=pointer]:
+          - /url: /collections/all
+          - generic [ref=e282]: Empieza a comprar
+    - generic [ref=e286]:
+      - heading "Seleccione opciones" [level=4] [ref=e287]
+      - img [ref=e289] [cursor=pointer]
+    - generic [ref=e293]:
+      - generic [ref=e295]:
+        - search [ref=e296]:
+          - group [ref=e297]:
+            - searchbox "Búsqueda" [ref=e298]
+        - img [ref=e300] [cursor=pointer]
+      - generic [ref=e304]:
+        - generic [ref=e305]: BÚSQUEDAS POPULARES
+        - generic [ref=e307]:
+          - link "POR PRENDAS" [ref=e308] [cursor=pointer]:
+            - /url: "#"
+          - link "CALZADO Y ACCESORIOS" [ref=e309] [cursor=pointer]:
+            - /url: "#"
+          - link "NUEVA COLECCIÓN" [ref=e310] [cursor=pointer]:
+            - /url: /collections/novedades
+  - img [ref=e312] [cursor=pointer]
+  - link "Contact us on WhatsApp" [ref=e315] [cursor=pointer]:
+    - /url: https://wa.me/34694216176?text=%C2%A1Hola%21+Me+gustar%C3%ADa...
+    - img [ref=e316]
+    - img [ref=e317]
+  - generic:
+    - generic:
+      - button [ref=e322] [cursor=pointer]:
+        - img [ref=e323]
+      - generic [ref=e325]:
+        - img [ref=e327]
+        - img [ref=e330]
+        - img [ref=e333]
+        - generic [ref=e335]:
+          - button "Comparar" [disabled] [ref=e336]:
+            - generic [ref=e337]: Comparar
+          - button [disabled] [ref=e338] [cursor=pointer]:
+            - img [ref=e339]

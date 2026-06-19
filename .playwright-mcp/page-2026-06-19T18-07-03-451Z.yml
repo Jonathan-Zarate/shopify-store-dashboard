@@ -1,0 +1,439 @@
+- generic [active] [ref=e1]:
+  - dialog "Respetamos tu privacidad":
+    - generic [ref=e2]:
+      - generic [ref=e3]:
+        - text: Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia.
+        - link "Más información" [ref=e4] [cursor=pointer]:
+          - /url: https://algo-bonito-eshop.myshopify.com/policies/privacy-policy
+      - generic [ref=e5]:
+        - button "Preferencias" [ref=e6] [cursor=pointer]
+        - button "Rechazar" [ref=e7] [cursor=pointer]
+        - button "Aceptar" [ref=e8] [cursor=pointer]
+      - button "Cerrar" [ref=e9] [cursor=pointer]: ✕
+  - link "Ir directamente al contenido" [ref=e10] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e11]:
+    - generic [ref=e15]:
+      - generic [ref=e16] [cursor=pointer]:
+        - img
+      - generic [ref=e17] [cursor=pointer]:
+        - img
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - img [ref=e21]
+          - text: Descarga ya nuestra APP
+        - link "ENVÍO GRATIS a partir de +59€ o a nuestras tiendas" [ref=e25] [cursor=pointer]:
+          - /url: /collections/eshop
+          - img [ref=e26]
+          - text: ENVÍO GRATIS a partir de +59€ o a nuestras tiendas
+        - link "Club Algo Bonito | Descubre sus ventajas" [ref=e32] [cursor=pointer]:
+          - /url: /pages/club-algo-bonito-preguntas-frecuentes
+          - img [ref=e33]
+          - text: Club Algo Bonito | Descubre sus ventajas
+        - link "JUNTO AL CABO | Ya disponible" [ref=e36] [cursor=pointer]:
+          - /url: /collections/summer
+    - banner [ref=e38]:
+      - generic [ref=e40]:
+        - link "Algo Bonito Algo Bonito" [ref=e41] [cursor=pointer]:
+          - /url: /
+          - img "Algo Bonito" [ref=e42]
+          - img "Algo Bonito" [ref=e43]
+        - menubar [ref=e45]:
+          - menuitem "JUNTO AL CABO" [ref=e46]:
+            - link "JUNTO AL CABO" [ref=e47] [cursor=pointer]:
+              - /url: /collections/summer
+          - menuitem "NOVEDADES" [ref=e48]:
+            - link "NOVEDADES" [ref=e49] [cursor=pointer]:
+              - /url: /collections/novedades
+          - menuitem "ROPA" [ref=e50]:
+            - link "ROPA" [ref=e51] [cursor=pointer]:
+              - /url: "#"
+              - text: ROPA
+              - img [ref=e52]
+          - menuitem "CALZADO Y ACCESORIOS" [ref=e54]:
+            - link "CALZADO Y ACCESORIOS" [ref=e55] [cursor=pointer]:
+              - /url: "#"
+              - text: CALZADO Y ACCESORIOS
+              - img [ref=e56]
+        - generic [ref=e58]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: Actualizar país/región
+            - combobox "Actualizar país/región" [ref=e64]:
+              - option "Español" [selected]
+              - option "português (Portugal)"
+            - generic:
+              - img
+          - link "Mi cuenta" [ref=e65] [cursor=pointer]:
+            - /url: /account/login
+            - img
+          - link [ref=e66] [cursor=pointer]:
+            - /url: "#hero-wishlist"
+            - img [ref=e67]
+          - link "Búsqueda" [ref=e69] [cursor=pointer]:
+            - /url: /search
+            - img
+          - link "0" [ref=e70] [cursor=pointer]:
+            - /url: /cart
+            - generic [ref=e71]:
+              - img
+              - generic [ref=e72]: "0"
+    - main [ref=e73]:
+      - link [ref=e84] [cursor=pointer]:
+        - /url: /collections/eshop
+      - generic [ref=e88]:
+        - generic [ref=e90]:
+          - heading "Top ventas Junio" [level=2] [ref=e91]
+          - paragraph [ref=e93]: Descubre la selección de prendas que más os han gustado este mes.
+        - generic [ref=e95]:
+          - generic [ref=e96] [cursor=pointer]:
+            - img
+          - generic [ref=e97] [cursor=pointer]:
+            - img
+          - generic [ref=e99]:
+            - generic [ref=e101]:
+              - button "Añadir a mi Wishlist" [ref=e104] [cursor=pointer]:
+                - img [ref=e105]
+              - figure [ref=e107]:
+                - link "Top lino cruzado natural Top lino cruzado natural" [ref=e108] [cursor=pointer]:
+                  - /url: /products/top-lino-cruzado-natural
+                  - img "Top lino cruzado natural" [ref=e109]
+                  - img "Top lino cruzado natural" [ref=e110]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                - generic [ref=e113] [cursor=pointer]:
+                  - generic [ref=e114]: "Selecciona talla:"
+                  - button "S" [ref=e116]
+                  - button "M" [ref=e118]
+                  - generic:
+                    - button "L"
+                  - button "XL" [ref=e120]
+              - generic [ref=e121]:
+                - link "Top lino cruzado natural" [ref=e122] [cursor=pointer]:
+                  - /url: /products/top-lino-cruzado-natural
+                - generic [ref=e123]:
+                  - insertion [ref=e124]: 29,99 €
+                  - text: ()
+            - generic [ref=e126]:
+              - button "Añadir a mi Wishlist" [ref=e129] [cursor=pointer]:
+                - img [ref=e130]
+              - figure [ref=e132]:
+                - link "Pantalón cropped denim azul tejano" [ref=e133] [cursor=pointer]:
+                  - /url: /products/pantalon-cropped-denim-azul-tejano
+                  - img "Pantalón cropped denim azul tejano" [ref=e134]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+              - generic [ref=e135]:
+                - link "Pantalón cropped denim azul tejano" [ref=e136] [cursor=pointer]:
+                  - /url: /products/pantalon-cropped-denim-azul-tejano
+                - generic [ref=e137]:
+                  - insertion [ref=e138]: 29,99 €
+                  - text: ()
+            - generic [ref=e140]:
+              - button "Añadir a mi Wishlist" [ref=e143] [cursor=pointer]:
+                - img [ref=e144]
+              - figure [ref=e146]:
+                - link "Pantalón seersucker pinzas recto blanco" [ref=e147] [cursor=pointer]:
+                  - /url: /products/pantalon-seersucker-marino-crudo
+                  - img "Pantalón seersucker pinzas recto blanco" [ref=e148]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+              - generic [ref=e149]:
+                - link "Pantalón seersucker pinzas recto blanco" [ref=e150] [cursor=pointer]:
+                  - /url: /products/pantalon-seersucker-marino-crudo
+                - generic [ref=e151]:
+                  - insertion [ref=e152]: 29,99 €
+                  - text: ()
+            - generic [ref=e154]:
+              - button "Añadir a mi Wishlist" [ref=e157] [cursor=pointer]:
+                - img [ref=e158]
+              - figure [ref=e160]:
+                - link "Top lino cruzado amarillo" [ref=e161] [cursor=pointer]:
+                  - /url: /products/top-lino-cruzado-bambu
+                  - img "Top lino cruzado amarillo" [ref=e162]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+              - generic [ref=e163]:
+                - link "Top lino cruzado amarillo" [ref=e164] [cursor=pointer]:
+                  - /url: /products/top-lino-cruzado-bambu
+                - generic [ref=e165]:
+                  - insertion [ref=e166]: 29,99 €
+                  - text: ()
+            - generic [ref=e168]:
+              - button "Añadir a mi Wishlist" [ref=e171] [cursor=pointer]:
+                - img [ref=e172]
+              - figure [ref=e174]:
+                - link "Camiseta manga corta tachas crudo" [ref=e175] [cursor=pointer]:
+                  - /url: /products/camiseta-manga-corta-tachas-natural-1
+                  - img "Camiseta manga corta tachas crudo" [ref=e176]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+              - generic [ref=e177]:
+                - link "Camiseta manga corta tachas crudo" [ref=e178] [cursor=pointer]:
+                  - /url: /products/camiseta-manga-corta-tachas-natural-1
+                - generic [ref=e179]:
+                  - insertion [ref=e180]: 24,99 €
+                  - text: ()
+            - generic [ref=e182]:
+              - button "Añadir a mi Wishlist" [ref=e185] [cursor=pointer]:
+                - img [ref=e186]
+              - figure [ref=e188]:
+                - link "Top fluido rayas azul marino" [ref=e189] [cursor=pointer]:
+                  - /url: /products/top-fluido-rayas-azul-marino
+                  - img "Top fluido rayas azul marino" [ref=e190]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+              - generic [ref=e191]:
+                - link "Top fluido rayas azul marino" [ref=e192] [cursor=pointer]:
+                  - /url: /products/top-fluido-rayas-azul-marino
+                - generic [ref=e193]:
+                  - insertion [ref=e194]: 22,99 €
+                  - text: ()
+            - generic [ref=e196]:
+              - button "Añadir a mi Wishlist" [ref=e199] [cursor=pointer]:
+                - img [ref=e200]
+              - figure [ref=e202]:
+                - link "Pantalón fluido rayas azul marino" [ref=e203] [cursor=pointer]:
+                  - /url: /products/pantalon-fluido-rayas-azul-marino
+                  - img "Pantalón fluido rayas azul marino" [ref=e204]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+              - generic [ref=e205]:
+                - link "Pantalón fluido rayas azul marino" [ref=e206] [cursor=pointer]:
+                  - /url: /products/pantalon-fluido-rayas-azul-marino
+                - generic [ref=e207]:
+                  - insertion [ref=e208]: 22,99 €
+                  - text: ()
+            - generic [ref=e210]:
+              - button "Añadir a mi Wishlist" [ref=e213] [cursor=pointer]:
+                - img [ref=e214]
+              - figure [ref=e216]:
+                - link "Camiseta sin mangas con tachas crudo" [ref=e217] [cursor=pointer]:
+                  - /url: /products/camiseta-sin-mangas-tachas-natural
+                  - img "Camiseta sin mangas con tachas crudo" [ref=e218]
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+              - generic [ref=e219]:
+                - link "Camiseta sin mangas con tachas crudo" [ref=e220] [cursor=pointer]:
+                  - /url: /products/camiseta-sin-mangas-tachas-natural
+                - generic [ref=e221]:
+                  - insertion [ref=e222]: 24,99 €
+                  - text: ()
+      - link [ref=e234] [cursor=pointer]:
+        - /url: /collections/lino
+      - link [ref=e245] [cursor=pointer]:
+        - /url: /collections/vestidos
+      - link [ref=e256] [cursor=pointer]:
+        - /url: /collections/novedades
+      - link [ref=e267] [cursor=pointer]:
+        - /url: /collections/looks-eventos-ocasiones-especiales-mujer
+      - iframe [ref=e275]:
+        - generic [ref=f4e3]:
+          - generic [ref=f4e4]:
+            - paragraph [ref=f4e5]:
+              - generic [ref=f4e7]: NEWSLETTER
+              - text: Sé la primera en conocer nuestras novedades y colecciones.
+            - paragraph
+          - generic [ref=f4e8]:
+            - generic [ref=f4e9]:
+              - textbox [ref=f4e10]
+              - generic: Nombre
+            - generic [ref=f4e11]:
+              - textbox [ref=f4e12]
+              - generic: Fecha de Cumpleaños
+            - generic [ref=f4e13]:
+              - textbox [ref=f4e14]
+              - generic: Correo electrónico
+          - generic [ref=f4e15]:
+            - checkbox "Acepto recibir correos electrónicos de marketing y ofertas especiales." [ref=f4e16]
+            - generic [ref=f4e17]: Acepto recibir correos electrónicos de marketing y ofertas especiales.
+          - button "Enviar" [ref=f4e19] [cursor=pointer]
+      - generic [ref=e278]:
+        - generic [ref=e281]:
+          - heading "Cambio y devoluciones" [level=6] [ref=e282]
+          - paragraph [ref=e283]: En un plazo de 30 días naturales desde la fecha de la compra del producto.
+        - generic [ref=e286]:
+          - heading "Recogida y Devolución en tienda" [level=6] [ref=e287]
+          - paragraph [ref=e288]: Recogidas y devoluciones gratuitas en todas nuestras tiendas.
+        - generic [ref=e291]:
+          - heading "Recogida en Oficina de Correos" [level=6] [ref=e292]
+          - paragraph [ref=e293]: Recoge y devuelve tus pedidos fácilmente en tu oficina de Correos más cercana.
+        - generic [ref=e296]:
+          - heading "Pagos seguros" [level=6] [ref=e297]
+          - paragraph [ref=e298]: Todos tus pagos se realizan de forma segura a través de tarjeta de crédito, Bizum y Paypal.
+    - contentinfo [ref=e300]:
+      - generic [ref=e301]:
+        - generic [ref=e303]:
+          - button "SOBRE NOSOTROS" [ref=e304] [cursor=pointer]
+          - list [ref=e305]:
+            - listitem [ref=e306]:
+              - link "Conócenos" [ref=e307] [cursor=pointer]:
+                - /url: /pages/about
+            - listitem [ref=e308]:
+              - link "Nuestras tiendas" [ref=e309] [cursor=pointer]:
+                - /url: /pages/store-locator
+            - listitem [ref=e310]:
+              - link "Club Algo Bonito" [ref=e311] [cursor=pointer]:
+                - /url: /pages/club-algo-bonito-preguntas-frecuentes
+            - listitem [ref=e312]:
+              - link "Trabaja con nosotros" [ref=e313] [cursor=pointer]:
+                - /url: https://algo-bonito.com/pages/trabaja-con-nosotros
+            - listitem [ref=e314]:
+              - link "Contacto" [ref=e315] [cursor=pointer]:
+                - /url: /pages/contacto
+        - generic [ref=e317]:
+          - button "AYUDA" [ref=e318] [cursor=pointer]
+          - list [ref=e319]:
+            - listitem [ref=e320]:
+              - link "Preguntas frecuentes" [ref=e321] [cursor=pointer]:
+                - /url: /pages/preguntas-frecuentes
+            - listitem [ref=e322]:
+              - link "Condiciones de compra" [ref=e323] [cursor=pointer]:
+                - /url: /pages/ayuda
+            - listitem [ref=e324]:
+              - link "Política de devolución" [ref=e325] [cursor=pointer]:
+                - /url: /policies/refund-policy
+            - listitem [ref=e326]:
+              - link "Envíos" [ref=e327] [cursor=pointer]:
+                - /url: /pages/envios
+            - listitem [ref=e328]:
+              - link "Devoluciones" [ref=e329] [cursor=pointer]:
+                - /url: /pages/devoluciones
+            - listitem [ref=e330]:
+              - link "Guía de tallas" [ref=e331] [cursor=pointer]:
+                - /url: /pages/size-guide
+            - listitem [ref=e332]:
+              - link "Canal ético" [ref=e333] [cursor=pointer]:
+                - /url: /pages/canal-etico
+        - generic [ref=e335]:
+          - generic [ref=e336]: SÍGUENOS
+          - list [ref=e337]:
+            - listitem [ref=e338]:
+              - link "Facebook" [ref=e339] [cursor=pointer]:
+                - /url: https://www.facebook.com/algobonitoofficial
+                - img [ref=e340]
+                - generic [ref=e341]: Facebook
+            - listitem [ref=e342]:
+              - link "Instagram" [ref=e343] [cursor=pointer]:
+                - /url: https://www.instagram.com/algobonitoofficial/
+                - img [ref=e344]
+                - generic [ref=e346]: Instagram
+            - listitem [ref=e347]:
+              - link "Pinterest" [ref=e348] [cursor=pointer]:
+                - /url: https://www.pinterest.es/algobonitoofficial/
+                - img [ref=e349]
+                - generic [ref=e350]: Pinterest
+            - listitem [ref=e351]:
+              - link "TikTok" [ref=e352] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@algobonitoofficial
+                - img [ref=e353]
+                - generic [ref=e354]: TikTok
+            - listitem [ref=e355]:
+              - link "Linkedin" [ref=e356] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/algo-bonito/
+                - generic [ref=e358]: Linkedin
+        - generic [ref=e360]:
+          - button "POLÍTICAS" [ref=e361] [cursor=pointer]
+          - list [ref=e362]:
+            - listitem [ref=e363]:
+              - link "Aviso Legal" [ref=e364] [cursor=pointer]:
+                - /url: /pages/politica-de-privacidad
+            - listitem [ref=e365]:
+              - link "Política de Privacidad" [ref=e366] [cursor=pointer]:
+                - /url: /pages/politica-de-privacidad
+            - listitem [ref=e367]:
+              - link "Términos del servicio" [ref=e368] [cursor=pointer]:
+                - /url: /policies/terms-of-service
+            - listitem [ref=e369]:
+              - link "Política de Cookies" [ref=e370] [cursor=pointer]:
+                - /url: /pages/politica-de-cookies
+            - listitem [ref=e371]:
+              - link "Consentimiento de Cookies" [ref=e372] [cursor=pointer]:
+                - /url: /policies/privacy-policy
+      - generic [ref=e374]:
+        - generic [ref=e377]:
+          - figure [ref=e378]:
+            - img "American Express" [ref=e379]
+          - figure [ref=e384]:
+            - img "Apple Pay" [ref=e385]
+          - figure [ref=e396]:
+            - img "Google Pay" [ref=e397]
+          - figure [ref=e405]:
+            - img "Maestro" [ref=e406]
+          - figure [ref=e412]:
+            - img "Mastercard" [ref=e413]
+          - figure [ref=e420]:
+            - img "PayPal" [ref=e421]
+          - figure [ref=e427]:
+            - img "Shop Pay" [ref=e428]
+          - figure [ref=e432]:
+            - img "Union Pay" [ref=e433]
+          - figure [ref=e439]:
+            - img "Visa" [ref=e440]
+        - paragraph [ref=e446]: © 2026 Algo Bonito, All rights reserved.
+      - 'button "Selecciona tu región: España / ES" [ref=e451] [cursor=pointer]':
+        - generic [ref=e452]: "Selecciona tu región:"
+        - text: España / ES
+    - generic [ref=e454]:
+      - generic [ref=e456]:
+        - heading "Carrito" [level=4] [ref=e457]
+        - img [ref=e459] [cursor=pointer]
+      - generic [ref=e462]:
+        - img [ref=e463]
+        - paragraph [ref=e472]: Su carrito está vacío.
+        - link "Empieza a comprar" [ref=e473] [cursor=pointer]:
+          - /url: /collections/all
+          - generic [ref=e474]: Empieza a comprar
+    - generic [ref=e478]:
+      - heading "Seleccione opciones" [level=4] [ref=e479]
+      - img [ref=e481] [cursor=pointer]
+    - generic [ref=e485]:
+      - generic [ref=e487]:
+        - search [ref=e488]:
+          - group [ref=e489]:
+            - searchbox "Búsqueda" [ref=e490]
+        - img [ref=e492] [cursor=pointer]
+      - generic [ref=e496]:
+        - generic [ref=e497]: BÚSQUEDAS POPULARES
+        - generic [ref=e499]:
+          - link "POR PRENDAS" [ref=e500] [cursor=pointer]:
+            - /url: "#"
+          - link "CALZADO Y ACCESORIOS" [ref=e501] [cursor=pointer]:
+            - /url: "#"
+          - link "NUEVA COLECCIÓN" [ref=e502] [cursor=pointer]:
+            - /url: /collections/novedades
+  - img [ref=e504] [cursor=pointer]
+  - link "Contact us on WhatsApp" [ref=e507] [cursor=pointer]:
+    - /url: https://wa.me/34694216176?text=%C2%A1Hola%21+Me+gustar%C3%ADa...
+    - img [ref=e508]
+    - img [ref=e509]

@@ -488,7 +488,6 @@ function showView(view) {
   const isProducts    = view === 'products';
   const isCollections = view === 'collections';
   const isMeetings    = view === 'meetings';
-  const isAssistant   = view === 'assistant';
   const isAnalytics   = view === 'analytics';
   const isSettings    = view === 'settings';
 
@@ -498,7 +497,6 @@ function showView(view) {
   });
   $('collectionsView').style.display = 'none';
   $('meetingsView').style.display    = 'none';
-  $('assistantView').style.display   = 'none';
   $('analyticsView').style.display   = 'none';
   $('settingsView').style.display    = 'none';
 
@@ -508,7 +506,6 @@ function showView(view) {
 
   if (isProducts) {
     if (localProducts.length > 0) {
-      // Data already loaded — re-render without hitting the API again
       render();
     } else {
       fetchProducts();
@@ -516,25 +513,22 @@ function showView(view) {
   }
   if (isCollections) { $('collectionsView').style.display = 'block'; fetchCollections(); }
   if (isMeetings)    $('meetingsView').style.display = 'block';
-  if (isAssistant)   { $('assistantView').style.display = 'block'; initChat(); }
   if (isAnalytics)   $('analyticsView').style.display = 'block';
   if (isSettings)    $('settingsView').style.display = 'block';
 
   $('navProducts').classList.toggle('active',    isProducts);
   $('navCollections').classList.toggle('active', isCollections);
   $('navMeetings').classList.toggle('active',    isMeetings);
-  $('navAssistant').classList.toggle('active',   isAssistant);
   $('navAnalytics').classList.toggle('active',   isAnalytics);
   $('navSettings').classList.toggle('active',    isSettings);
 
-  const labels = { products: 'Products', collections: 'Collections', meetings: 'Meetings', assistant: 'Assistant', analytics: 'Analytics', settings: 'Settings' };
+  const labels = { products: 'Products', collections: 'Collections', meetings: 'Meetings', analytics: 'Analytics', settings: 'Settings' };
   $('breadcrumbCurrent').textContent = labels[view] || view;
 }
 
 $('navProducts').addEventListener('click',    e => { e.preventDefault(); showView('products'); });
 $('navCollections').addEventListener('click', e => { e.preventDefault(); showView('collections'); });
 $('navMeetings').addEventListener('click',    e => { e.preventDefault(); showView('meetings'); });
-$('navAssistant').addEventListener('click',   e => { e.preventDefault(); showView('assistant'); });
 $('navAnalytics').addEventListener('click',   e => { e.preventDefault(); showView('analytics'); });
 $('navSettings').addEventListener('click',    e => { e.preventDefault(); showView('settings'); });
 
@@ -985,6 +979,43 @@ document.querySelector('.sidebar').addEventListener('click', e => {
   if (e.target.closest('.nav-item') && window.innerWidth <= 768) {
     setTimeout(closeMobileSidebar, 150);
   }
+});
+
+// ── Floating chat widget ──────────────────────────────────────
+let chatWidgetOpen = false;
+
+function openChatWidget() {
+  chatWidgetOpen = true;
+  const panel = $('chatWidgetPanel');
+  const fab   = $('chatWidgetBtn');
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden', 'false');
+  fab.classList.add('open');
+  fab.querySelector('.cw-fab-open').style.display  = 'none';
+  fab.querySelector('.cw-fab-close').style.display = '';
+  if (!chatInitialized) initChat();
+  setTimeout(() => $('chatInput').focus(), 250);
+}
+
+function closeChatWidget() {
+  chatWidgetOpen = false;
+  const panel = $('chatWidgetPanel');
+  const fab   = $('chatWidgetBtn');
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden', 'true');
+  fab.classList.remove('open');
+  fab.querySelector('.cw-fab-open').style.display  = '';
+  fab.querySelector('.cw-fab-close').style.display = 'none';
+}
+
+$('chatWidgetBtn').addEventListener('click', () => {
+  chatWidgetOpen ? closeChatWidget() : openChatWidget();
+});
+
+$('chatWidgetClose').addEventListener('click', closeChatWidget);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && chatWidgetOpen) closeChatWidget();
 });
 
 // ── Prefetch collections count for sidebar badge ──────────────

@@ -3,6 +3,7 @@ const express  = require('express');
 const cors     = require('cors');
 const fetch    = require('node-fetch');
 const path     = require('path');
+const { getBot } = require('./bot/graph');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -346,74 +347,15 @@ app.delete('/api/collections/:id', async (req, res) => {
   }
 });
 
-// ── POST /api/chat ────────────────────────────────────────────
-let catalogCache = null;
-let catalogCachedAt = 0;
-const CATALOG_TTL = 2 * 60 * 1000; // 2 minutes
-
-async function getCatalog() {
-  if (catalogCache && Date.now() - catalogCachedAt < CATALOG_TTL) return catalogCache;
-  try {
-    const r = await fetch(
-      shopifyUrl('/products.json?limit=250&fields=id,title,product_type,vendor,status,body_html,variants'),
-      { headers: shopifyHeaders() }
-    );
-    if (!r.ok) return null;
-    const data = await r.json();
-    const lines = (data.products || [])
-      .filter(p => p.status === 'active')
-      .slice(0, 120)
-      .map(p => {
-        const v     = (p.variants || [])[0] || {};
-        const price = v.price ? `$${v.price}` : 'sin precio';
-        const stock = (p.variants || []).reduce((s, x) => s + (x.inventory_quantity || 0), 0);
-        const desc  = p.body_html ? p.body_html.replace(/<[^>]+>/g, '').trim().slice(0, 120) : '';
-        return `• ${p.title}${p.product_type ? ` [${p.product_type}]` : ''}${p.vendor ? ` — ${p.vendor}` : ''} | Precio: ${price} | Stock: ${stock} uds${desc ? ` | "${desc}"` : ''}`;
-      })
-      .join('\n');
-    catalogCache    = lines;
-    catalogCachedAt = Date.now();
-    return lines;
-  } catch { return null; }
-}
-
+// ── POST /api/chat (LangGraph assistant — usa BigQuery + Shopify) ─
 app.post('/api/chat', async (req, res) => {
   if (!GROQ_API_KEY) return res.status(500).json({ error: 'GROQ_API_KEY not configured' });
   const { messages } = req.body;
   if (!Array.isArray(messages) || !messages.length) return res.status(400).json({ error: 'messages required' });
-
-  const catalog = await getCatalog();
-  const catalogSection = catalog
-    ? `CATÁLOGO ACTUAL (productos activos):\n${catalog}`
-    : 'No se pudo cargar el catálogo en este momento.';
-
-  const system = `Eres un asistente de ventas amigable, experto y entusiasta de esta tienda online. Tu misión es ayudar a los compradores a encontrar el producto perfecto, resolver sus dudas y guiarlos hacia una decisión de compra con confianza.
-
-${catalogSection}
-
-INSTRUCCIONES:
-- Responde siempre en español de forma cálida, natural y conversacional.
-- Usa el catálogo para dar recomendaciones concretas con nombre del producto, precio y stock.
-- Si el stock es bajo (≤5 uds) genera urgencia: "¡Quedan pocas unidades!".
-- Compara productos cuando el comprador dude entre opciones.
-- Si no hay stock, sugiérelo amablemente y propón alternativas.
-- No inventes productos fuera del catálogo.
-- Respuestas cortas y directas (máximo 4 oraciones). Usa emojis con moderación.`;
-
   try {
-    const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
-      body: JSON.stringify({
-        model: GROQ_MODEL,
-        messages: [{ role: 'system', content: system }, ...messages],
-        max_tokens: 400,
-        temperature: 0.7,
-      }),
-    });
-    const data = await r.json();
-    if (!r.ok) return res.status(r.status).json({ error: data.error?.message || 'Groq error' });
-    res.json({ reply: data.choices[0].message.content.trim() });
+    const result = await getBot().invoke({ messages }, { recursionLimit: 10 });
+    const last   = result.messages[result.messages.length - 1];
+    res.json({ reply: last.content });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -473,6 +415,7 @@ Responde ÚNICAMENTE con un JSON válido con esta estructura:
     res.status(500).json({ error: err.message });
   }
 });
+
 
 // ── Health check ──────────────────────────────────────────────
 app.get('/api/health', (req, res) => {
