@@ -1,0 +1,8 @@
+.env
+.env.*
+node_modules
+.git
+.gitignore
+.playwright-mcp
+*.png
+*.log
