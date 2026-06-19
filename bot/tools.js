@@ -3,30 +3,50 @@
 const { tool } = require('@langchain/core/tools');
 const { z } = require('zod');
 
-// Usa el servidor desplegado que ya tiene el token correcto de Shopify + BigQuery
+// ── Catalog cache (5 min TTL) ─────────────────────────────────
+let _cache = null;
+let _cachedAt = 0;
+const CACHE_TTL = 5 * 60 * 1000;
+
 function storeApi() {
   return process.env.STORE_API_URL || 'https://reech-ai-demo01-4933250423.southamerica-east1.run.app';
 }
 
-async function fetchJSON(url) {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`HTTP ${r.status} en ${url}`);
-  return r.json();
+async function getCatalog() {
+  if (_cache && Date.now() - _cachedAt < CACHE_TTL) return _cache;
+  const r = await fetch(`${storeApi()}/api/products`);
+  if (!r.ok) throw new Error(`API error ${r.status}`);
+  const data = await r.json();
+  // Sólo activos, con precio real (> 0), sin duplicados por id
+  const seen = new Set();
+  _cache = (data.products || []).filter(p => {
+    if (seen.has(p.id)) return false;
+    seen.add(p.id);
+    const price = parseFloat(p.price);
+    return p.status === 'active' && !isNaN(price) && price > 0;
+  });
+  _cachedAt = Date.now();
+  return _cache;
 }
 
-// ── Tool 1: Buscar productos ──────────────────────────────────────
+function formatProduct(p) {
+  const price = `$${parseFloat(p.price).toFixed(2)}`;
+  const img   = p.images?.[0]?.src;
+  return `• ${p.title} [${p.product_type || 'producto'}] — ${price}${img ? `\n  ${img}` : ''}`;
+}
+
+// ── Tool 1: Buscar productos ──────────────────────────────────
 const buscarProductos = tool(
   async ({ query, tipo, precio_max, precio_min }) => {
     try {
-      const data = await fetchJSON(`${storeApi()}/api/products`);
-      let products = (data.products || []).filter(p => p.status === 'active');
+      let products = await getCatalog();
 
       if (query) {
-        const q = query.toLowerCase();
+        const q = query.toLowerCase().trim();
+        // Filtro estricto: al menos título O tipo deben coincidir
         products = products.filter(p =>
           p.title?.toLowerCase().includes(q) ||
-          p.product_type?.toLowerCase().includes(q) ||
-          p.vendor?.toLowerCase().includes(q)
+          p.product_type?.toLowerCase().includes(q)
         );
       }
       if (tipo) {
@@ -36,13 +56,10 @@ const buscarProductos = tool(
       if (precio_max != null) products = products.filter(p => parseFloat(p.price) <= precio_max);
       if (precio_min != null) products = products.filter(p => parseFloat(p.price) >= precio_min);
 
-      if (!products.length) return 'No encontré productos con esos criterios. Prueba con otros términos o consulta las categorías disponibles.';
+      if (!products.length)
+        return 'No encontré productos con esos criterios. Usa listar_categorias para ver qué tipos hay disponibles.';
 
-      return products.slice(0, 8).map(p => {
-        const price = p.price ? `$${parseFloat(p.price).toFixed(2)}` : 'precio no disponible';
-        const img   = p.images?.[0]?.src || '';
-        return `• ${p.title} [${p.product_type || 'producto'}] — ${price}${img ? `\n  Imagen: ${img}` : ''}`;
-      }).join('\n');
+      return products.slice(0, 8).map(formatProduct).join('\n');
     } catch (e) {
       return `Error al buscar productos: ${e.message}`;
     }
@@ -50,105 +67,61 @@ const buscarProductos = tool(
   {
     name: 'buscar_productos',
     description:
-      'Busca productos en la tienda por nombre, tipo de producto o rango de precio. ' +
-      'Úsalo cuando el usuario pregunte por un artículo específico, quiera ver qué hay disponible, o filtre por precio.',
+      'Busca productos activos en la tienda por nombre, tipo o rango de precio. ' +
+      'Úsalo cuando el usuario pregunte por un artículo concreto o quiera filtrar por precio.',
     schema: z.object({
-      query: z.string().optional().describe('Término de búsqueda: nombre del producto, vendor, etc.'),
-      tipo: z.string().optional().describe('Tipo de producto: snowboard, accessories, giftcard, etc.'),
+      query:     z.string().optional().describe('Término de búsqueda: nombre del producto o tipo'),
+      tipo:      z.string().optional().describe('Tipo exacto: snowboard, accessories, giftcard'),
       precio_max: z.number().optional().describe('Precio máximo en dólares'),
       precio_min: z.number().optional().describe('Precio mínimo en dólares'),
     }),
   }
 );
 
-// ── Tool 2: Ver categorías disponibles ───────────────────────────
+// ── Tool 2: Listar categorías ─────────────────────────────────
 const listarCategorias = tool(
   async () => {
     try {
-      const data = await fetchJSON(`${storeApi()}/api/products`);
-      const products = data.products || [];
-      const tipos = [...new Set(products.filter(p => p.product_type).map(p => p.product_type))];
-      const vendors = [...new Set(products.filter(p => p.vendor).map(p => p.vendor))];
-      const stats = tipos.map(t => {
-        const grupo = products.filter(p => p.product_type === t);
-        const precios = grupo.map(p => parseFloat(p.price)).filter(Boolean);
-        const min = Math.min(...precios);
-        const max = Math.max(...precios);
-        return `• ${t} (${grupo.length} productos, $${min.toFixed(2)} – $${max.toFixed(2)})`;
+      const products = await getCatalog();
+      // Normaliza tipos (snowboard y Snowboard → snowboard)
+      const tipoMap = {};
+      products.forEach(p => {
+        const t = (p.product_type || 'sin categoría').toLowerCase();
+        if (!tipoMap[t]) tipoMap[t] = [];
+        tipoMap[t].push(parseFloat(p.price));
       });
-      return `Categorías disponibles en la tienda:\n${stats.join('\n')}\n\nVendedores: ${vendors.join(', ')}`;
+
+      const lines = Object.entries(tipoMap).map(([tipo, prices]) => {
+        const min = Math.min(...prices);
+        const max = Math.max(...prices);
+        const rango = min === max ? `$${min.toFixed(2)}` : `$${min.toFixed(2)} – $${max.toFixed(2)}`;
+        return `• ${tipo} (${prices.length} producto${prices.length > 1 ? 's' : ''}, ${rango})`;
+      });
+
+      return `Catálogo disponible (${products.length} productos activos):\n${lines.join('\n')}`;
     } catch (e) {
-      return `Error al obtener categorías: ${e.message}`;
+      return `Error: ${e.message}`;
     }
   },
   {
     name: 'listar_categorias',
     description:
-      'Lista todas las categorías de productos disponibles con rango de precios. ' +
+      'Lista las categorías de productos activos con cantidad y rango de precios. ' +
       'Úsalo cuando el usuario pregunte qué tipos de productos hay o quiera explorar el catálogo.',
     schema: z.object({}),
   }
 );
 
-// ── Tool 3: Ver colecciones ───────────────────────────────────────
-const verColecciones = tool(
-  async () => {
-    try {
-      const data = await fetchJSON(`${storeApi()}/api/collections`);
-      const cols = data.collections || [];
-      if (!cols.length) return 'No hay colecciones configuradas en la tienda.';
-      return 'Colecciones de la tienda:\n' +
-        cols.map(c => `• ${c.title} (${c.type || 'colección'}) — handle: "${c.handle}"`).join('\n');
-    } catch (e) {
-      return `Error al obtener colecciones: ${e.message}`;
-    }
-  },
-  {
-    name: 'ver_colecciones',
-    description:
-      'Muestra las colecciones y agrupaciones de la tienda. ' +
-      'Úsalo cuando el usuario pregunte por colecciones, temporadas o grupos especiales de productos.',
-    schema: z.object({}),
-  }
-);
-
-// ── Tool 4: Ver inventario de un producto ────────────────────────
-const verInventario = tool(
-  async ({ product_id }) => {
-    try {
-      const data = await fetchJSON(`${storeApi()}/api/inventory/${product_id}`);
-      const variants = data.variants || [];
-      if (!variants.length) return `No se encontraron variantes para el producto ${product_id}.`;
-      const lines = variants.map(v => {
-        const stock = v.available ?? v.inventory_quantity ?? 'desconocido';
-        const stockLabel = typeof stock === 'number'
-          ? (stock === 0 ? '❌ Sin stock' : stock <= 5 ? `⚠️ Pocas unidades (${stock})` : `✅ En stock (${stock})`)
-          : 'Stock desconocido';
-        return `• ${v.title} — $${v.price} | ${stockLabel}`;
-      });
-      return `Variantes e inventario:\n${lines.join('\n')}`;
-    } catch (e) {
-      return `Error al consultar inventario: ${e.message}`;
-    }
-  },
-  {
-    name: 'ver_inventario',
-    description:
-      'Consulta las variantes, tallas, precios y disponibilidad de stock de un producto específico. ' +
-      'Úsalo cuando el usuario pregunte por disponibilidad, tallas o quiera saber si hay stock.',
-    schema: z.object({
-      product_id: z.number().describe('ID numérico del producto en Shopify (obtenido de buscar_productos)'),
-    }),
-  }
-);
-
-// ── Tool 5: Producto más barato / más caro ───────────────────────
+// ── Tool 3: Comparar precios ──────────────────────────────────
 const compararPrecios = tool(
   async ({ tipo, ordenar }) => {
     try {
-      const data = await fetchJSON(`${storeApi()}/api/products`);
-      let products = (data.products || []).filter(p => p.status === 'active' && p.price);
-      if (tipo) products = products.filter(p => p.product_type?.toLowerCase().includes(tipo.toLowerCase()));
+      let products = await getCatalog();
+      if (tipo) {
+        const t = tipo.toLowerCase();
+        products = products.filter(p => p.product_type?.toLowerCase().includes(t));
+      }
+      if (!products.length) return `No hay productos activos${tipo ? ` del tipo "${tipo}"` : ''}.`;
 
       products.sort((a, b) =>
         ordenar === 'desc'
@@ -156,25 +129,58 @@ const compararPrecios = tool(
           : parseFloat(a.price) - parseFloat(b.price)
       );
 
-      if (!products.length) return 'No hay productos disponibles con esos criterios.';
-
-      return products.slice(0, 5).map((p, i) =>
-        `${i + 1}. ${p.title} — $${parseFloat(p.price).toFixed(2)}`
-      ).join('\n');
+      const label = ordenar === 'desc' ? 'más caros' : 'más baratos';
+      return `Productos ${label}${tipo ? ` (${tipo})` : ''}:\n` +
+        products.slice(0, 6).map((p, i) =>
+          `${i + 1}. ${p.title} — $${parseFloat(p.price).toFixed(2)}`
+        ).join('\n');
     } catch (e) {
-      return `Error al comparar precios: ${e.message}`;
+      return `Error: ${e.message}`;
     }
   },
   {
     name: 'comparar_precios',
     description:
-      'Ordena productos por precio (más barato o más caro). ' +
-      'Úsalo cuando el usuario quiera el producto más económico, el más caro, o comparar precios dentro de una categoría.',
+      'Ordena productos por precio. Úsalo cuando el usuario pregunte cuál es el más barato, ' +
+      'el más caro, o quiera comparar precios dentro de una categoría.',
     schema: z.object({
-      tipo: z.string().optional().describe('Filtrar por tipo de producto (ej: snowboard)'),
-      ordenar: z.enum(['asc', 'desc']).describe('"asc" para más baratos primero, "desc" para más caros primero'),
+      tipo:    z.string().optional().describe('Filtrar por tipo de producto (ej: snowboard)'),
+      ordenar: z.enum(['asc', 'desc']).describe('"asc" = más baratos primero, "desc" = más caros'),
     }),
   }
 );
 
-module.exports = { buscarProductos, listarCategorias, verColecciones, verInventario, compararPrecios };
+// ── Tool 4: Ver inventario ────────────────────────────────────
+const verInventario = tool(
+  async ({ product_id }) => {
+    try {
+      const r = await fetch(`${storeApi()}/api/inventory/${product_id}`);
+      if (!r.ok) return `No se pudo obtener el inventario para el producto ${product_id}.`;
+      const data = await r.json();
+      const variants = data.variants || [];
+      if (!variants.length) return 'Este producto no tiene variantes registradas.';
+      return variants.map(v => {
+        const stock = v.available ?? 0;
+        const estado = v.inventory_management !== 'shopify'
+          ? 'sin seguimiento'
+          : stock === 0 ? '❌ Agotado'
+          : stock <= 5  ? `⚠️ Pocas unidades (${stock})`
+          : `✅ En stock (${stock})`;
+        return `• ${v.title} — $${v.price} | ${estado}`;
+      }).join('\n');
+    } catch (e) {
+      return `Error al consultar inventario: ${e.message}`;
+    }
+  },
+  {
+    name: 'ver_inventario',
+    description:
+      'Consulta disponibilidad y stock de un producto por su ID numérico de Shopify. ' +
+      'Obtén el ID primero con buscar_productos.',
+    schema: z.object({
+      product_id: z.number().describe('ID numérico del producto (de buscar_productos)'),
+    }),
+  }
+);
+
+module.exports = { buscarProductos, listarCategorias, compararPrecios, verInventario };
